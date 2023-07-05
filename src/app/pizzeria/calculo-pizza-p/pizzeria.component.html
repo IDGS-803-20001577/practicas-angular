@@ -1,0 +1,121 @@
+<h2>Registrar Pedido</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="">Nombre Cliente</span>
+        </div>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="">Dirección Envio</span>
+        </div>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="">Telefono</span>
+        </div>
+        <input type="number" class="form-control">
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<h3>Pizza</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h1>Tamaño de la Pizza</h1>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Chica $40
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Mediana $80
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Pizza Grande $120
+        </label>
+      </div>
+    </div>
+    <div class="col-4">
+      <h1>Ingredientes</h1>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Jamon $10
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Piña $10
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Champiñones $10
+        </label>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="">Numero de Pizzas</span>
+        </div>
+        <input type="number" class="form-control">
+      </div>
+      <div class="col-1">
+        <br>
+        <button class="btn btn-primary">Agregar</button>
+      </div>
+    </div>
+
+
+
+  </div>
+  <hr>
+  <h3>Detalle del pedido</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Tamaño</th>
+        <th>Ingredientes</th>
+        <th>Número de pizzas</th>
+        <th>Subtotal</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button class="btn btn-danger">Quitar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h3>Costo total del pedido: </h3>
+
+  <button class="btn btn-success">Confirmar Pedido</button>

@@ -1,0 +1,67 @@
+.contenedor {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: blue;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+  }
+  
+  #tittle {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #tittle h2 {
+    font-size: 24px;
+    color: yellow;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  .radio label {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  input[type="number"],
+  input[type="radio"] {
+    margin-left: 10px;
+  }
+  
+  #section2 {
+    margin-top: 50px;
+  }
+  
+  #section2 .form-control-static {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  #section3 {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .btn-success {
+    background-color: #e4002b;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-success:hover {
+    background-color: #c30024;
+  }
+  
