@@ -1,121 +1,177 @@
 <h2>Registrar Pedido</h2>
+
+<!-- Formulario de datos del cliente -->
 <div class="container">
   <div class="row">
-    <div class="col-4">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="">Nombre Cliente</span>
+    <form>
+      <div class="row">
+        <div class="col-4">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Nombre completo:</span>
+            </div>
+            <input type="text" name="nombre" [(ngModel)]="nombreCliente" class="form-control">
+          </div>
         </div>
-        <input type="text" class="form-control">
+        <div class="col-4">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Dirección:</span>
+            </div>
+            <input type="text" name="direccion" [(ngModel)]="direccionCliente" class="form-control">
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Teléfono:</span>
+            </div>
+            <input type="text" name="telefono" [(ngModel)]="telefonoCliente" class="form-control">
+          </div>
+        </div>
       </div>
+    </form>
+  </div>
+</div>
+<br>
+<!-- Formulario de selección de pizza -->
+<hr>
+<h1>Seleccionar Pizza</h1>
+
+<div class="container">
+  <div class="row">
+    <form>
+      <div class="row">
+        <div class="col-4">
+          <h2>Tamaño de Pizza</h2>
+          <div class="col-5">
+            <div class="form-check">
+              <input type="radio" name="tamano" value="chica" [(ngModel)]="tamanoPizza"> Chica ($40)
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="form-check">
+              <input type="radio" name="tamano" value="mediana" [(ngModel)]="tamanoPizza"> Mediana ($80)
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="form-check">
+              <input type="radio" name="tamano" value="grande" [(ngModel)]="tamanoPizza"> Grande ($120)
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <h2>Ingredientes:</h2>
+          <div class="col-4">
+            <div class="form-check">
+              <input type="checkbox" name="ingredientes" value="piña" [(ngModel)]="pinaChecked"> Piña ($10)
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-check">
+              <input type="checkbox" name="ingredientes" value="peperoni" [(ngModel)]="peperoniChecked"> Peperoni ($10)
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="form-check">
+              <input type="checkbox" name="ingredientes" value="champiñon" [(ngModel)]="champinonChecked"> Champiñón
+              ($10)
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Número de pizzas:</span>
+            </div>
+            <input type="number" name="numeroPizzas" [(ngModel)]="numeroPizzas" min="1" class="form-control">
+          </div>
+          <br>
+          <button class="btn btn-primary" type="button" (click)="agregarPizza()">Agregar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br>
+<br>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>Detalle de Pedido</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tamaño</th>
+            <th>Ingredientes</th>
+            <th>Número de pizzas</th>
+            <th>Subtotal</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pizza of pedido">
+            <td>{{ pizza.tamano }}</td>
+            <td>{{ pizza.ingredientes.join(', ') }}</td>
+            <td>{{ pizza.numeroPizzas }}</td>
+            <td>{{ pizza.subtotal }}</td>
+            <td><button class="btn btn-danger" type="button" (click)="quitarPizza(pizza)">Quitar</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-success" type="button" (click)="finalizarPedido()">Finalizar Pedido</button>
+      <br>
+      <br>
     </div>
-    <div class="col-5">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="">Dirección Envio</span>
-        </div>
-        <input type="text" class="form-control">
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="">Telefono</span>
-        </div>
-        <input type="number" class="form-control">
-      </div>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <div class="col-12">
+      <h2>Ventas Acumuladas</h2>
+      <table class="">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Pedido</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let venta of ventasAcumuladas">
+            <td>{{ venta.nombreCliente }}</td>
+            <td>{{ venta.direccionCliente }}</td>
+            <td>{{ venta.telefonoCliente }}</td>
+            <td>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tamaño</th>
+                    <th>Ingredientes</th>
+                    <th>Número de pizzas</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pizza of venta.pedido">
+                    <td>{{ pizza.tamano }}</td>
+                    <td>{{ pizza.ingredientes.join(', ') }}</td>
+                    <td>{{ pizza.numeroPizzas }}</td>
+                    <td>{{ pizza.subtotal }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td>{{ venta.total }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <br>
     </div>
   </div>
 </div>
-<hr>
-
-<h3>Pizza</h3>
-
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-      <h1>Tamaño de la Pizza</h1>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1">
-          Chica $40
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1">
-          Mediana $80
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1">
-          Pizza Grande $120
-        </label>
-      </div>
-    </div>
-    <div class="col-4">
-      <h1>Ingredientes</h1>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          Jamon $10
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          Piña $10
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          Champiñones $10
-        </label>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="">Numero de Pizzas</span>
-        </div>
-        <input type="number" class="form-control">
-      </div>
-      <div class="col-1">
-        <br>
-        <button class="btn btn-primary">Agregar</button>
-      </div>
-    </div>
-
-
-
-  </div>
-  <hr>
-  <h3>Detalle del pedido</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Tamaño</th>
-        <th>Ingredientes</th>
-        <th>Número de pizzas</th>
-        <th>Subtotal</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><button class="btn btn-danger">Quitar</button></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <hr>
-
-  <h3>Costo total del pedido: </h3>
-
-  <button class="btn btn-success">Confirmar Pedido</button>
